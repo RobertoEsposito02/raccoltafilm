@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+        version="2.2">
+	<persistence-unit name="raccoltafilm_unit" transaction-type="RESOURCE_LOCAL">
+		<class>it.prova.raccoltafilm.model.Utente</class>
+		<class>it.prova.raccoltafilm.model.Ruolo</class>
+		<class>it.prova.raccoltafilm.model.Regista</class>
+		<class>it.prova.raccoltafilm.model.Film</class>
+		<properties>
+			<!-- setup con MySql -->
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/raccoltafilm?allowPublicKeyRetrieval=true&amp;useSSL=false&amp;serverTimezone=UTC"/>
+			<property name="javax.persistence.jdbc.user" value="root"/>
+			<property name="javax.persistence.jdbc.password" value="root"/>
+			
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+			<property name="hibernate.connection.pool_size" value="10"/>
+			
+			<property name="hibernate.show_sql" value="true"/>
+			<!-- create-drop,create,update,validate -->
+			<property name="hibernate.hbm2ddl.auto" value=""/>
+		</properties>
+	</persistence-unit>
+</persistence>
