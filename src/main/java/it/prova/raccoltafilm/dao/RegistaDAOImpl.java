@@ -102,12 +102,12 @@ public class RegistaDAOImpl implements RegistaDAO {
 	@Override
 	public Regista findOneEagerFilm(Long id) throws Exception {
 		TypedQuery<Regista> query = entityManager
-				.createQuery("select r from Regista r join r.films f where r.id = :id", Regista.class)
+				.createQuery("select r from Regista r join fetch r.films f where r.id = :id", Regista.class)
 				.setParameter("id", id);
 		if(!query.getResultList().isEmpty()) 
 			throw new RegistaConFilmAssociatiException("Impossibile eliminare un regista che ha dei film associati");
 		
-		return query.getSingleResult();
+		return query.getResultList().stream().findFirst().orElse(null);
 	}
 
 }

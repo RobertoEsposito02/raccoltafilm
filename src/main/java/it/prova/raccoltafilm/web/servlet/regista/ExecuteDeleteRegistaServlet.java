@@ -34,11 +34,10 @@ public class ExecuteDeleteRegistaServlet extends HttpServlet {
 			request.getRequestDispatcher("home").forward(request, response);
 			return;
 		}
-		
+		System.out.println(idRegista);
 		try {
 			Regista regista = registaService.caricaSingoloElementoConFilms(Long.parseLong(idRegista));
-			if(regista.getFilms().isEmpty())
-				registaService.rimuovi(Long.parseLong(idRegista));
+			registaService.rimuovi(registaService.caricaSingoloElemento(Long.parseLong(idRegista)).getId());
 			
 		} catch (RegistaConFilmAssociatiException e) {
 			request.setAttribute("errorMessage", "Attenzio..ne si vuole eliminare un regista con dei film associati.");
@@ -47,10 +46,10 @@ public class ExecuteDeleteRegistaServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 			request.setAttribute("errorMessage", "Attenzione si è verificato un errore.");
-			request.getRequestDispatcher("home").forward(request, response);
+			request.getRequestDispatcher("/index.jsp").forward(request, response);
 			return;
 		}
 		
-		response.sendRedirect("ExecuteListRegistaServlet?operationResult=SUCCESS");
+		response.sendRedirect("/raccoltafilm/ExecuteListRegistaServlet?operationResult=SUCCESS");
 	}
 }
