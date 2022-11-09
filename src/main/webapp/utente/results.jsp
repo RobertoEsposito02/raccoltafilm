@@ -1,19 +1,16 @@
-<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-<!doctype html>
-<html lang="it" class="h-100" >
-	 <head>
-	 
-	 	<!-- Common imports in pages -->
-	 	<jsp:include page="../header.jsp" />
-	   
-	   <title>Pagina dei Risultati</title>
-	 </head>
-	 
+<!DOCTYPE html>
+<html class="h-100">
+	<head>
+		<jsp:include page="../header.jsp" />
+		<meta charset="ISO-8859-1">
+		<title>Insert title here</title>
+	</head>
 	<body class="d-flex flex-column h-100">
-	 
-		<!-- Fixed navbar -->
+	
 		<jsp:include page="../navbar.jsp"></jsp:include>
 	 
 	
@@ -53,24 +50,22 @@
 				                    <tr>
 			                         	<th>Nome</th>
 				                        <th>Cognome</th>
-				                        <th>NickName</th>
-				                        <th>Data di Nascita</th>
-				                        <th>Sesso</th>
+				                        <th>Username</th>
+				                        <th>Data Creazione</th>
 				                        <th>Azioni</th>
 				                    </tr>
 				                </thead>
 				                <tbody>
-				                	<c:forEach items="${registi_list_attribute }" var="registaItem">
+				                	<c:forEach items="${utenteSearch }" var="utenteItem">
 										<tr>
-											<td>${registaItem.nome }</td>
-											<td>${registaItem.cognome }</td>
-											<td>${registaItem.nickName }</td>
-											<td><fmt:formatDate type = "date" value = "${registaItem.dataDiNascita }" /></td>
-											<td>${registaItem.sesso.abbreviazione }</td>
+											<td>${utenteItem.nome }</td>
+											<td>${utenteItem.cognome }</td>
+											<td>${utenteItem.username }</td>
+											<td><fmt:formatDate type = "date" value = "${utenteItem.dateCreated }" /></td>
 											<td>
 												<a class="btn  btn-sm btn-outline-secondary" href="ExecuteVisualizzaRegistaServlet?idRegista=${registaItem.id }">Visualizza</a>
 												<a class="btn  btn-sm btn-outline-primary ml-2 mr-2" href="PrepareUpdateRegistaServlet?idRegista=${registaItem.id }">Edit</a>
-												<a class="btn btn-outline-danger btn-sm" href="${pageContext.request.contextPath }/admin/PrepareDeleteRegistaServlet?idRegista=${registaItem.id }">Delete</a>
+												<a class="btn btn-outline-danger btn-sm" href="${pageContext.request.contextPath }/users/PrepareDeleteRegistaServlet?idRegista=${registaItem.id }">Delete</a>
 											</td>
 										</tr>
 									</c:forEach>
@@ -91,6 +86,6 @@
 		
 		<!-- Footer -->
 		<jsp:include page="../footer.jsp" />
-		
+	
 	</body>
 </html>

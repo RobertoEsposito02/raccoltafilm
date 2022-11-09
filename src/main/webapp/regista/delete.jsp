@@ -58,11 +58,11 @@
 					    
 					    <div class='card-footer'>
 					   
-					        <form method="post" action="${pageContext.request.contextPath }/users/ExecuteDeleteRegistaServlet">
+					        <form method="post" action="${pageContext.request.contextPath }/admin/ExecuteDeleteRegistaServlet">
 					        <button type="submit" name="deleteSubmit" value="deleteSubmit" id="deleteSubmit" class="btn btn-danger">Elimina</button>
 					        <input type="hidden" name="idRegista" value="${deleteRegistaAttr.id}">
 					        
-					        <a href="ExecuteListRegistaServlet" class='btn btn-outline-secondary' style='width:80px'>
+					        <a href="${pageContext.request.contextPath}/ExecuteListRegistaServlet" class='btn btn-outline-secondary' style='width:80px'>
 					            <i class='fa fa-chevron-left'></i> Back
 					        </a>
 					        </form>

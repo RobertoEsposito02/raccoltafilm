@@ -1,5 +1,6 @@
 package it.prova.raccoltafilm.dao;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,5 +14,6 @@ public interface UtenteDAO extends IBaseDAO<Utente> {
 	public Optional<Utente> findByUsernameAndPassword(String username, String password) throws Exception;
 
 	public Optional<Utente> login(String username, String password) throws Exception;
-
+	
+	public List<Utente> findByExample(Utente example) throws Exception;
 }

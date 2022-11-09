@@ -193,4 +193,21 @@ public class UtenteServiceImpl implements UtenteService {
 
 	}
 
+	@Override
+	public List<Utente> ricercaUtente(Utente example) throws Exception {
+		EntityManager entityManager = LocalEntityManagerFactoryListener.getEntityManager();
+
+		try {
+			utenteDAO.setEntityManager(entityManager);
+
+			return utenteDAO.findByExample(example);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			LocalEntityManagerFactoryListener.closeEntityManager(entityManager);
+		}
+	}
+
 }

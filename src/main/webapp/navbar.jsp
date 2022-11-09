@@ -21,15 +21,14 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
             <ul class="dropdown-menu" aria-labelledby="dropdown07">
-              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/home">Home</a></li>
+              <li><a class="dropdown-item" href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/PrepareSearchRegistaServlet">Ricerca Registi</a></li>
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/PrepareInsertRegistaServlet">Inserisci Regista</a></li>
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/PrepareSearchFilmServlet">Ricerca Film</a></li>
               <li><a class="dropdown-item" href="${pageContext.request.contextPath}/PrepareInsertFilmServlet">Inserisci Film</a></li>
               
-              <%-- QUESTO LINK SERVE SOLO PER DIMOSTRARE COME GESTIRE LA COMPARSA/SCOMPARSA IN BASE AL RUOLO --%>
               <c:if test="${userInfo.isAdmin() }">
-              	<li><a class="dropdown-item" href="#">Link che appare solo se sei ADMIN</a></li>
+              	<li><a class="dropdown-item" href="${pageContext.request.contextPath }/admin/PrepareSearchUtenteServlet">Ricerca Utente</a></li>
               </c:if>
             </ul> 
           </li>   
